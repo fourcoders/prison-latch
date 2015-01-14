@@ -29,7 +29,7 @@ Load the default questions.
 
 Run with the embed php server.
 
-	mkdir web
+	cd web
 	php -S localhost:8000
 
 Visit in your prefer browser.
