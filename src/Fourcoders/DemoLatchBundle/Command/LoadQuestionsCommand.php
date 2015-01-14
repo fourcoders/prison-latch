@@ -26,7 +26,6 @@ class LoadQuestionsCommand extends ContainerAwareCommand
             'Latch te ayuda a proteger tus servicios online' => 1,
             'Chema se dedica a la alfarería' => 0,
             'Latch NO está disponible para Firefox OS 1.1 y superior' => 0,
-            'El blog de Chema se llama un informatico en el lado del mal' => 1,
             'Latch te permite reducir los riesgos de ataque dirigidos a tus servicios online' => 1,
             'Latch es igual de seguro que tener solamente usuario y contraseña' => 0,
             'Si ya tienes una cuenta de usuario de Latch, puedes activarla como cuenta de desarrollador' => 1,
