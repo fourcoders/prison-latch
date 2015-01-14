@@ -1,0 +1,9 @@
+ {% extends "::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <script type="text/javascript">
+        window.location = '{{ path('fourcoders_latch_register') }}'
+    </script>
+{% endblock fos_user_content %}

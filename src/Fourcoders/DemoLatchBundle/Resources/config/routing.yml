@@ -1,0 +1,27 @@
+fourcoders_demo_latch_homepage:
+    path:     /
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:index }
+
+fourcoders_demo_latch_cell:
+    path:     /cell
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:cell }
+
+fourcoders_questions:
+    path:     /questions
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:questions }
+
+fourcoders_demo_latch_question1:
+    path:     /green
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:question1 }
+
+fourcoders_demo_latch_question2:
+    path:     /red
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:question2 }
+
+fourcoders_demo_latch_question3:
+    path:     /blue
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:question3 }
+
+fourcoders_demo_latch_question4:
+    path:     /yellow
+    defaults: { _controller: FourcodersDemoLatchBundle:Game:question4 }

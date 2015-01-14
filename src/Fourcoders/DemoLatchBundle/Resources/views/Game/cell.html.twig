@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap 101 Template</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<style type="text/css">
+		.recubre {
+			border: 1px solid #e3e3e3;border-radius: 4px; padding:20px;
+		}
+
+		.top10 {
+			margin-top:10px;
+		}
+	</style>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+
+	<body>
+		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">Prison Latch</a>
+			    </div>
+			      <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Como se juega <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			          </ul>
+			        </li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</header>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="col-md-12" >
+					<div class="col-md-4">
+						<img width="300" height="300" src="images/chema.png">
+					</div>
+
+					<div class="col-md-8">
+						<div class="col-md-12 recubre">
+							<ul class="fail">
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+						       <li style="display: inline;"><img width="70" src="images/foca.png"></li>
+							</ul>
+							<span>Nivel de vida:</span>
+							<div class="progress">
+								<div id="progreso-vida" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" data-progreso="100" style="width: 100%">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 recubre top10">
+							<ul class="good"></ul>
+							<span>Completado:</span>
+							<div class="progress">
+								<div id="progreso-juego" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" data-progreso="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid" >
+				<div class="col-md-12 top10">
+					<div class="board">
+						<div class="jumbotron">
+							  <h1>Ayuda a chema a salir de la carcel!</h1>
+							  <p>...</p>
+							  <p><a class="btn btn-primary btn-lg" href="#" id="start" role="button">Comienza el juego</a></p>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$('#start').click(function() {
+				localStorage.progreso = parseInt(1);
+				localStorage.vidas = parseInt(9);
+				$.post( "{{ path('fourcoders_questions') }}", function( data ) {
+					$('.board').html(data)
+				});
+			  	return false
+			});
+		});
+		$('body').on('click', '.check', function (){
+			var urls = [ "/question1" ,"/question2","/question3" , "/question4" ];
+			var datos = [];
+			// por cada url hacemos peticion ajax.
+			// guardamos resultado en array
+			$.each(urls, function( index, url) {
+				$.ajax({
+					beforeSend: function() { $("#questions").hide(); $('#loader').show(); },
+				    url: url,
+				    type: 'GET',
+				    success: function(data){
+				        datos.push("1");
+				        if (index == 3) {
+				        	doAjax()
+				        }
+				    },
+				    error: function (x, status, error) {
+				        if (x.status == 403) {
+				        	datos.push("0")
+				        	if (index == 3) {
+				        		doAjax()
+				        	}
+				        }
+				    }
+				});
+			});
+
+			function doAjax() {
+				$.ajax({
+					type: "POST",
+					url: "{{ path('fourcoders_check') }}",
+					data: { data: JSON.stringify(datos) },
+					success: function(data){
+						if (data == 1) {
+							if (localStorage.progreso >= 10) {
+								var r = confirm("Has ganado! volvamos a jugar!!");
+								if (r == true) {
+								    window.location.href = '/cell';
+								} else {
+								    window.location.href = "http://fourcoders.com";
+								}
+							} else {
+								localStorage.progreso = parseInt(localStorage.progreso)+1
+							}
+							$('.board').html('<div class="col-md-12"><div class="alert alert-success" role="alert">Well Done!</div></div>')
+							$('.board').append('<div class="col-md-12"><a class="next btn btn-primary btn-lg" href="#" class="next">Next</a></div>')
+							$('.good').append('<li style="display: inline;padding-left:2px;"><img width="70" src="images/latch.png"></li>')
+							progreso = $('#progreso-juego').attr('data-progreso');
+							progreso = parseInt(progreso) + 10;
+							$('#progreso-juego').attr('data-progreso', progreso);
+							$('#progreso-juego').css('width' , progreso + "%");
+						} else {
+							if (localStorage.vidas <= 0) {
+								var r = confirm("Has perdido! volvamos a jugar!!");
+								if (r == true) {
+								    window.location.href = '/cell';
+								} else {
+								    window.location.href = "http://fourcoders.com";
+								}
+							} else {
+								localStorage.vidas = parseInt(localStorage.vidas)-1;
+							}
+							$('.board').html('<div class="col-md-12"><div class="alert alert-danger" role="alert">Sorry you fail</div></div>')
+							$('ul.fail li:first').remove()
+							progreso = $('#progreso-vida').attr('data-progreso');
+							progreso = parseInt(progreso) - 10;
+							$('#progreso-vida').attr('data-progreso', progreso);
+							$('#progreso-vida').css('width' , progreso + "%");
+							$('.board').append('<div class="col-md-12"><a class="next btn btn-primary btn-lg" href="#">Next</a></div>')
+						}
+						var myTimer =  setInterval(function () { $('.next').click();}, 5000);
+						setInterval(function () { window.clearInterval(myTimer)}, 7000);
+					}
+				});
+			}
+
+	        return false
+	    });
+		$('body').on('click', '.next', function (){
+			$.post( "{{ path('fourcoders_questions') }}", function( data ) {
+				$('.board').html(data)
+			});
+			return false
+	    });
+	</script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    {#
+    <script src="js/bootstrap.min.js"></script>
+    #}
+</html>

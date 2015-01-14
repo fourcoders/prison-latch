@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+{% block latch_content %}
+	<form method="post" action="{{ path('fourcoders_latch_register') }}">
+		{{ form_widget(form._token) }}
+		<div class="latch container_register">
+			<table>
+				<thead >
+					<tr>
+						<td colspan="2">
+							<img src="{{ asset('bundles/fourcoderslatch/img/logo_Latch.png') }}">
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2" {% if error.message != '' %}class="error"{% endif %}>
+							<span>{{error.message}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>{{ 'latch_token'|trans }}</td>
+						<td>{{ form_widget(form.latch) }}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>
+							<input type="submit" class="latchinputregister" value="{{'latch_pair'|trans}}">
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</form>
+{% endblock %}

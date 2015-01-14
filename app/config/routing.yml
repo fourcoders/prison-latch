@@ -1,0 +1,10 @@
+fourcoders_demo_latch:
+    resource: "@FourcodersDemoLatchBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fourcoders_latch:
+    resource: "@FourcodersLatchBundle/Resources/config/routing.yml"
+    prefix:   /
