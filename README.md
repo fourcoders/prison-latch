@@ -1,5 +1,7 @@
 # Prison Latch
 
+![PrisonLatch](http://www.fourcoders.com/prison-latch/images/chema2.png "PrisonLatch")
+
 ## Installation
 
 Clone the repository.
