@@ -1,6 +1,6 @@
 # Prison Latch
 
-![PrisonLatch](http://www.fourcoders.com/prison-latch/images/chema2.png "PrisonLatch")
+![PrisonLatch](http://www.resizer.es/photos/chema2.png "PrisonLatch")
 
 ## Installation
 
