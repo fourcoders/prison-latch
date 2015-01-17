@@ -1,35 +1,23 @@
 {% extends "::base.html.twig" %}
 {% block latch_content %}
+
 	<form method="post" action="{{ path('fourcoders_latch_register') }}">
 		{{ form_widget(form._token) }}
-		<div class="latch container_register">
-			<table>
-				<thead >
-					<tr>
-						<td colspan="2">
-							<img src="{{ asset('bundles/fourcoderslatch/img/logo_Latch.png') }}">
-						</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="2" {% if error.message != '' %}class="error"{% endif %}>
-							<span>{{error.message}}</span>
-						</td>
-					</tr>
-					<tr>
-						<td>{{ 'latch_token'|trans }}</td>
-						<td>{{ form_widget(form.latch) }}</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td>
-							<input type="submit" class="latchinputregister" value="{{'latch_pair'|trans}}">
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+		<img src="{{ asset('bundles/fourcoderslatch/img/logo_Latch.png') }}">
+		<span>{{error.message}}</span>
+		{{ form_widget(form.latch, {'attr': {'placeholder': 'Código'}}) }}
+		<div id="start">
+			<input type="submit" class="latchinputregister" value="Parear">
 		</div>
 	</form>
+
+	<br><br><br>
+	<span>¿Cómo parear con Latch?</span><br>
+	<div id="instructions">
+		<span>- Abrir su aplicación Latch</span>
+		<span>- Generar nuevo servicio</span>
+		<span>- Generar nuevo código</span>
+		<span>- Insertar código y parear</span>
+	</div>
+
 {% endblock %}
