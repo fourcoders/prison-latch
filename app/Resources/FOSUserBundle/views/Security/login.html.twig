@@ -1,40 +1,33 @@
-{#% extends "FourcodersDemoLatchBundle::layout.html.twig" %#}
 {% extends "::base.html.twig" %}
-
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
 
-<br>
+    <br>
     <span>
         <img src="/images/prisonwhite.png">
     </span>
-
     <br>
-
-    <form action="{{ path("fos_user_security_check") }}" method="post" class="bs-docs-example">
-     
+    <form id="login" action="{{ path("fos_user_security_check") }}" method="post" class="bs-docs-example">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
         {% if error %}
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div> <br>
         {% endif %}
-
         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Username" />
-<br>
-     
         <input type="password" id="password" name="_password" required="required" placeholder="password"/>
-
-        <br>
-
-
-        <input type="submit" id="start" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-
-
-      
-        <br>
-       
+        <div id="start"><a id="submit" href="#">Entrar</a></div>
     </form>            
-            <div id="start"><a href="{{ path('fos_user_registration_register') }}">Registrarse</a></div>
+    <div id="start"><a href="{{ path('fos_user_registration_register') }}">Registrarse</a></div>
+
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(function(){
+        $('#submit').click(function (e){
+            $('#login').submit()
+        });
+    });
+</script>
+{% endblock %}  
