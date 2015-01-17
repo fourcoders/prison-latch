@@ -16,7 +16,9 @@
         {% endif %}
         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Username" />
         <input type="password" id="password" name="_password" required="required" placeholder="Password"/>
-        <div id="start"><a id="submit" href="#">Entrar</a></div>
+        <div id="start">
+            <input type="submit" value="Entrar">
+        </div>        
     </form>            
     <div id="start"><a href="{{ path('fos_user_registration_register') }}">Registrarse</a></div>
 
